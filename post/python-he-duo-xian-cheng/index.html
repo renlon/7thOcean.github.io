@@ -1,22 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://blog.moreyoung.life</id>
-    <title>Gridea</title>
-    <updated>2020-08-13T04:22:02.736Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://blog.moreyoung.life"/>
-    <link rel="self" href="https://blog.moreyoung.life/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
-    <logo>https://blog.moreyoung.life/images/avatar.png</logo>
-    <icon>https://blog.moreyoung.life/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
-    <entry>
-        <title type="html"><![CDATA[Python和多线程]]></title>
-        <id>https://blog.moreyoung.life/post/python-he-duo-xian-cheng/</id>
-        <link href="https://blog.moreyoung.life/post/python-he-duo-xian-cheng/">
-        </link>
-        <updated>2020-08-12T13:20:32.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="什么是thread-线程">什么是thread 线程</h2>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Python和多线程 | Gridea</title>
+<link rel="shortcut icon" href="https://blog.moreyoung.life/favicon.ico?v=1597292501887">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.moreyoung.life/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Python和多线程 | Gridea - Atom Feed" href="https://blog.moreyoung.life/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="什么是thread 线程
+
+Separate flow of execution，同时执行
+但是在python3 里面，thread并不是真正同时执行， Cpython的多thread实现方式可能并不会加快速度，注意的限制是GIL
+如果想在..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://blog.moreyoung.life">
+  <img class="avatar" src="https://blog.moreyoung.life/images/avatar.png?v=1597292501887" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://blog.moreyoung.life" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://blog.moreyoung.life/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://blog.moreyoung.life/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://blog.moreyoung.life/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Python和多线程
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-08-12
+              </span>
+              <span>
+                15 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="什么是thread-线程">什么是thread 线程</h2>
 <ul>
 <li>Separate flow of execution，同时执行</li>
 <li>但是在python3 里面，thread并不是真正同时执行， Cpython的多thread实现方式可能并不会加快速度，注意的限制是GIL</li>
@@ -461,6 +537,146 @@ def set_message(self, value, name):
 </ul>
 <h1 id="reference">Reference</h1>
 <p>https://realpython.com/intro-to-python-threading/</p>
-]]></content>
-    </entry>
-</feed>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AFthread-%E7%BA%BF%E7%A8%8B">什么是thread 线程</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8threading-model">使用threading model</a>
+<ul>
+<li><a href="#%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84thread">启动一个新的thread</a></li>
+<li><a href="#daemon-threads">Daemon Threads</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8-daemon-%E9%80%89%E9%A1%B9">使用 daemon 选项</a></li>
+</ul>
+</li>
+<li><a href="#join-thread">Join() Thread</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AAthread">处理多个thread</a>
+<ul>
+<li><a href="#%E5%A4%8D%E6%9D%82%E7%9A%84%E5%A4%9Athread-%E4%BE%8B%E5%AD%90">复杂的多thread 例子</a></li>
+<li><a href="#%E7%AE%80%E5%8D%95%E7%9A%84%E5%A4%9Athread-%E4%BE%8B%E5%AD%90">简单的多thread 例子</a></li>
+<li><a href="#race-condition">Race condition</a>
+<ul>
+<li><a href="#race-condition%E7%9A%84%E4%BE%8B%E5%AD%90">Race condition的例子</a></li>
+<li><a href="#%E5%BD%93%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AAthead%E7%9A%84%E6%97%B6%E5%80%99">当只有一个thead的时候</a></li>
+<li><a href="#%E5%BD%93%E6%9C%89%E4%B8%A4%E4%B8%AAthread%E7%9A%84%E6%97%B6%E5%80%99">当有两个thread的时候</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%82%A3%E4%B9%88%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3race-condition%E5%91%A2">那么如何解决Race Condition呢？</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95-%E4%BD%BF%E7%94%A8lock">基本的同步方法 -- 使用lock</a></li>
+</ul>
+</li>
+<li><a href="#deadlock%E9%97%AE%E9%A2%98">Deadlock问题</a></li>
+<li><a href="#producer-consumer-thread-%E9%97%AE%E9%A2%98">Producer-Consumer Thread 问题</a><br>
+*
+<ul>
+<li><a href="#python-queue">Python Queue</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8event%E7%9A%84%E4%BE%8B%E5%AD%90">使用event的例子</a></li>
+</ul>
+</li>
+<li><a href="#threading-%E7%9A%84-object">Threading 的 object</a>
+<ul>
+<li><a href="#threadingsemaphore">Threading.Semaphore</a></li>
+<li><a href="#threadingtimer">Threading.Timer</a></li>
+<li><a href="#threadingbarrier">Threading.Barrier</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#reference">Reference</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://blog.moreyoung.life/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
